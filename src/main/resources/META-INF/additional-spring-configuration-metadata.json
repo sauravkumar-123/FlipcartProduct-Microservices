@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "ProductManufacturer.ribbon.listOfServers",
+    "type": "java.lang.String",
+    "description": "A description for 'ProductManufacturer.ribbon.listOfServers'"
+  },
+  {
+    "name": "ProductManufacturer.ribbon.eureka.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'ProductManufacturer.ribbon.eureka.enabled'"
+  },
+  {
+    "name": "ProductManufacturer.ribbon.listOfServers",
+    "type": "java.lang.String",
+    "description": "A description for 'ProductManufacturer.ribbon.listOfServers'"
+  }
+]}
