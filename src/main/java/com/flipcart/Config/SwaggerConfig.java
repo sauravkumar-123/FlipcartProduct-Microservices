@@ -19,27 +19,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class SwaggerConfig {
 
-	public static final Contact DEFAULT_CONTACT = new Contact("FlipcartProductData", "http://localhost:8080/v1/flipcartproductapi", "saurav.tit@gmail.com");
-	public static final ApiInfo API_DEFAULT = new ApiInfo(
-			  "FlipcartProductData Api Documentation", 
-			  "API Documentation Of FlipcartProductData", 
-			  "1.0", 
-			  "urn:tos",
-	          DEFAULT_CONTACT, 
-	          "FlipcartProductAPI 2.0", 
-	          "www.flipcartproduct.com",new ArrayList<VendorExtension>());
-	
-	private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = 
-		                             new HashSet<String>(Arrays.asList("application/json","application/xml"));
+	public static final Contact DEFAULT_CONTACT = new Contact("FlipcartProductData",
+			"http://localhost:8080/v1/flipcartproductapi", "saurav.tit@gmail.com");
+	public static final ApiInfo API_DEFAULT = new ApiInfo("FlipcartProductData Api Documentation",
+			"API Documentation Of FlipcartProductData", "1.0", "urn:tos", DEFAULT_CONTACT, "FlipcartProductAPI 2.0",
+			"www.flipcartproduct.com", new ArrayList<VendorExtension>());
 
-	
-	//@ http://localhost:8080/swagger-ui.html#
-	//@ http://localhost:8080/v2/api-docs
+	private static final Set<String> DEFAULT_PRODUCES_AND_CONSUMES = new HashSet<String>(
+			Arrays.asList("application/json", "application/xml"));
+
+	// @ http://localhost:8080/swagger-ui.html#
+	// @ http://localhost:8080/v2/api-docs
 	@Bean
 	public Docket swagerAPI() {
-		return new  Docket(DocumentationType.SWAGGER_2)
-				.apiInfo(API_DEFAULT)
-				.produces(DEFAULT_PRODUCES_AND_CONSUMES)
-		        .consumes(DEFAULT_PRODUCES_AND_CONSUMES);
+		return new Docket(DocumentationType.SWAGGER_2).apiInfo(API_DEFAULT).produces(DEFAULT_PRODUCES_AND_CONSUMES)
+				.consumes(DEFAULT_PRODUCES_AND_CONSUMES);
 	}
 }

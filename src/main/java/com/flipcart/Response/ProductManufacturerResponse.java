@@ -16,5 +16,5 @@ public class ProductManufacturerResponse {
 	private ZonedDateTime timestamp;
 	private boolean status;
 	private String message;
-	private Object data;
+	private Object datasource;
 }

@@ -11,10 +11,10 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class FlipcartProductTypeResponce {
+public class ExceptionResponse {
 
 	private ZonedDateTime timestamp;
 	private boolean status;
 	private String message;
-	private Object data;
+	private Object datasource;
 }

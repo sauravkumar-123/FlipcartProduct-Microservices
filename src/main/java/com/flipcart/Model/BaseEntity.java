@@ -23,7 +23,7 @@ public class BaseEntity {
 	@CreationTimestamp
 	@Column(name = "Created_Date", updatable = false)
 	private Timestamp createdDate;
-	
+
 	@UpdateTimestamp
 	@Column(name = "Updated_Date", insertable = false)
 	private Timestamp updatedDate;
