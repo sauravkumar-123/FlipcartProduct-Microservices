@@ -11,14 +11,20 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
 import com.flipcart.Config.RibbonConfiguration;
+import com.flipcart.ProxyServerFign.ProductManufacturerProxy;
+import com.flipcart.ProxyServerFign.ProductManufacturerProxyImpl;
+import com.netflix.client.config.DefaultClientConfigImpl;
+import com.netflix.client.config.IClientConfig;
 
 @EnableFeignClients("com.flipcart")
 @EnableDiscoveryClient
@@ -55,18 +61,18 @@ public class FlipcartProductApplication {
 		};
 	}
 
-//	  @Bean
-//	  @LoadBalanced
-//	  public RestTemplate restTemplate() {
-//	    return new RestTemplate();
-//	  }
+	@Bean
+	@LoadBalanced
+	public RestTemplate restTemplate() {
+		return new RestTemplate();
+	}
 
 	/*
 	 * @Bean public Sampler defaultSampler() { return Sampler.ALWAYS_SAMPLE; }
 	 */
 
-//	@Bean  
-//	public ProductManufacturerProxy productManufacturerProxy() {
-//		return new ProductManufacturerProxyImpl();
-//	  }
+	@Bean
+	public ProductManufacturerProxy proxyServer() {
+		return new ProductManufacturerProxyImpl();
+	}
 }
