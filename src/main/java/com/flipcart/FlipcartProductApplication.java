@@ -23,8 +23,8 @@ import com.fasterxml.jackson.datatype.jsr310.ser.ZonedDateTimeSerializer;
 import com.flipcart.Config.RibbonConfiguration;
 import com.flipcart.ProxyServerFign.ProductManufacturerProxy;
 import com.flipcart.ProxyServerFign.ProductManufacturerProxyImpl;
-import com.netflix.client.config.DefaultClientConfigImpl;
-import com.netflix.client.config.IClientConfig;
+
+import brave.sampler.Sampler;
 
 @EnableFeignClients("com.flipcart")
 @EnableDiscoveryClient
@@ -67,9 +67,10 @@ public class FlipcartProductApplication {
 		return new RestTemplate();
 	}
 
-	/*
-	 * @Bean public Sampler defaultSampler() { return Sampler.ALWAYS_SAMPLE; }
-	 */
+	@Bean
+	public Sampler defaultSampler() {
+		return Sampler.ALWAYS_SAMPLE;
+	}
 
 	@Bean
 	public ProductManufacturerProxy proxyServer() {

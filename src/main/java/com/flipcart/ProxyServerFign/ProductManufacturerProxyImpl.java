@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.client.RestTemplate;
 
+import com.flipcart.ExceptionHandle.GlobalException;
 import com.flipcart.Response.ProductManufacturerResponse;
 
 public class ProductManufacturerProxyImpl implements ProductManufacturerProxy {
@@ -17,9 +18,14 @@ public class ProductManufacturerProxyImpl implements ProductManufacturerProxy {
 	@Override
 	public ProductManufacturerResponse getProductDetailsFromManufacturer() {
 		final String URL = "http://ProductManufacturer/v1/productmanufacture/get-all-productdetails";
-		ProductManufacturerResponse productManufacturerResponse = restTemplate.getForObject(URL,ProductManufacturerResponse.class);
-		logger.info("Responce From Manufacturer:{}" + productManufacturerResponse);
-		return productManufacturerResponse;
+		try {
+			ProductManufacturerResponse productManufacturerResponse = restTemplate.getForObject(URL,ProductManufacturerResponse.class);
+			logger.info("Responce From Manufacturer:{}" + productManufacturerResponse);
+			return productManufacturerResponse;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new GlobalException("Server Error!!While Calling ProductManufacturer");
+		}
 	}
 
 }
