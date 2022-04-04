@@ -123,6 +123,18 @@ public class FlipcartProductServiceImpl implements FlipcartProductService {
 		}
 	}
 
+	@Override
+	public FlipcartProduct getFlipcartProductByProductCode(String productCode) {
+		Optional<FlipcartProduct> chkPoint = flipcartProductRepository.findByProductCodeAndIsActive(productCode, 'Y');
+		if (chkPoint.isPresent()) {
+			FlipcartProduct flipcartProduct = chkPoint.get();
+			logger.info("Fetch flipcartProduct Detail:{}" + flipcartProduct);
+			return flipcartProduct;
+		} else {
+			throw new NullPointerException("Products Details Not Found With productCode: " + productCode);
+		}
+	}
+
 	@Transactional(rollbackOn = Exception.class)
 	@Override
 	public FlipcartProduct updateFlipcartProductDetailsByProductcode(String productCode,

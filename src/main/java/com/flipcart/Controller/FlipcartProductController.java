@@ -124,6 +124,20 @@ public class FlipcartProductController {
 		}
 	}
 
+	@GetMapping("/get-productBycode/{productCode}")
+	public ResponseEntity<FlipcartProductResponse> getProductByProductCode(
+			@PathVariable("productCode") String productCode) {
+		FlipcartProduct flipcartProduct = productService.getFlipcartProductByProductCode(productCode);
+		if (null != flipcartProduct) {
+			return new ResponseEntity<FlipcartProductResponse>(
+					new FlipcartProductResponse(true, "Product Detail Fetched", flipcartProduct), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<FlipcartProductResponse>(
+					new FlipcartProductResponse(false, "Product Detail Not Found", flipcartProduct),
+					HttpStatus.NOT_FOUND);
+		}
+	}
+
 	@PutMapping("/update-productdetails/{productCode}")
 	public ResponseEntity<FlipcartProductResponse> updateProductdetailsByProductcode(
 			@PathVariable("productCode") String productCode,

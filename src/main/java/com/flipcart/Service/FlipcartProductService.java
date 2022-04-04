@@ -18,6 +18,8 @@ public interface FlipcartProductService {
 
 	public List<FlipcartProduct> getFlipcartProductBySerachKey(String searchKey);
 
+	public FlipcartProduct getFlipcartProductByProductCode(String productCode);
+
 	public FlipcartProduct updateFlipcartProductDetailsByProductcode(String productcode,
 			FlipcartProduct productDetailsRequest);
 
