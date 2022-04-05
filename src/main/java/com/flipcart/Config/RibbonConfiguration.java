@@ -15,12 +15,12 @@ public class RibbonConfiguration {
 
 	@Autowired
 	IClientConfig iClientConfig;
-	
+
 //	@Bean
 //	public IPing ping(IClientConfig ribbonclient) {
 //		return new PingUrl();
 //	}
-	
+
 	@Bean
 	public IRule rule(IClientConfig ribbonclient) {
 		return new AvailabilityFilteringRule();

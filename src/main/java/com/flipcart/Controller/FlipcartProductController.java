@@ -74,8 +74,8 @@ public class FlipcartProductController {
 			}
 		} else {
 			return new ResponseEntity<FlipcartProductResponse>(
-					new FlipcartProductResponse(false, "Data Not Found From ProductManufacturer!!Please Check", null),
-					HttpStatus.NOT_FOUND);
+					new FlipcartProductResponse(false, manufacturerResponse.getMessage(), null),
+					HttpStatus.SERVICE_UNAVAILABLE);
 		}
 	}
 
